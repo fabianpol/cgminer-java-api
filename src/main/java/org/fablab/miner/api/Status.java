@@ -28,7 +28,7 @@ public class Status {
     if (matcher.matches()) {
       return new Status(matcher.group(2), matcher.group(3), matcher.group(4), matcher.group(5));
     }
-    throw new RuntimeException();
+    throw new RuntimeException("Couldn't match with status pattern");
   }
 
   public String getRequestTime() {
