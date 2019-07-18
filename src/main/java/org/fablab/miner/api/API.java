@@ -1,26 +1,27 @@
 package org.fablab.miner.api;
 
-import javax.inject.Inject;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.fablab.miner.api.impl.CommandService;
 
 public class API {
 
-  private static final Logger LOGGER = LoggerFactory.getLogger(API.class);
+	private static final String QUERY_PATTERN = "{\"command\":\"%s\",\"parameter\":\"0\"}";
 
-  private CommandService commandService;
+	private CommandService commandService;
 
-  @Inject
-  public API(CommandService commandService) {
-    this.commandService = commandService;
-  }
+	public API() {
+		this.commandService = new CommandService();
+	}
 
-  public Summary getSummary(String ip, int port) {
-    String result = commandService.process("summary", ip, port);
-    String[] splitted = result.split("SUMMARY");
-    Status status = Status.fromString(splitted[0]);
-    return Summary.fromString(splitted[1].substring(1));
-  }
+	public String getSummary(Miner miner) {
+		return commandService.process(String.format(QUERY_PATTERN, "summary"), miner);
+	}
 
+	public String getStats(Miner miner) {
+		return commandService.process(String.format(QUERY_PATTERN, "stats"), miner);
+	}
+	
+	public String getPools(Miner miner) {
+		return commandService.process(String.format(QUERY_PATTERN, "pools"), miner);
+	}
 
 }
