@@ -17,7 +17,8 @@ public class API {
 	}
 
 	public String getStats(Miner miner) {
-		return commandService.process(String.format(QUERY_PATTERN, "stats"), miner);
+		String cmd = String.format(QUERY_PATTERN, "stats");
+		return JSONSyntaxCorrector.correctSyntax(commandService.process(cmd, miner));
 	}
 	
 	public String getPools(Miner miner) {
