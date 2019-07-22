@@ -1,1 +1,1 @@
-# miner-api
+# cgminer-java-api
