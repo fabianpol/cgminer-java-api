@@ -6,8 +6,8 @@ import com.google.common.base.MoreObjects;
 
 public class Miner {
 
-	private String ip;
-	private int port;
+	private final String ip;
+	private final int port;
 
 	public Miner(String ip, int port) {
 		this.ip = Objects.requireNonNull(ip);

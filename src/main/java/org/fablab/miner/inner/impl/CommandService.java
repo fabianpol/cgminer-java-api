@@ -1,4 +1,4 @@
-package org.fablab.miner.api.impl;
+package org.fablab.miner.inner.impl;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
