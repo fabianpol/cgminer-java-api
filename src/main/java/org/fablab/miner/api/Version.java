@@ -3,7 +3,7 @@ package org.fablab.miner.api;
 import com.google.common.base.MoreObjects;
 import com.google.gson.annotations.SerializedName;
 
-public class Version {
+public class Version extends ResponseWithStatus {
 
 	@SerializedName("CGMiner")
 	private String cgminer;
@@ -38,7 +38,7 @@ public class Version {
 
 	@Override
 	public String toString() {
-		return MoreObjects.toStringHelper(Version.class).add("cgminer", cgminer).add("api", api).add("miner", miner)
+		return MoreObjects.toStringHelper(Version.class).add("status", status).add("cgminer", cgminer).add("api", api).add("miner", miner)
 				.add("compileTime", compileTime).add("type", type).toString();
 	}
 

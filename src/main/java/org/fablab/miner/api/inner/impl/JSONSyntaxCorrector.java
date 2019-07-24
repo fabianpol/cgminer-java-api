@@ -1,4 +1,4 @@
-package org.fablab.miner.inner.impl;
+package org.fablab.miner.api.inner.impl;
 
 
 // This class fixes the JSON syntax which is incorrectly returned by miner

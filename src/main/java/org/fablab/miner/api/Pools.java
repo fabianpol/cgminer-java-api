@@ -3,12 +3,12 @@ package org.fablab.miner.api;
 import com.google.common.base.MoreObjects;
 import com.google.gson.annotations.SerializedName;
 
-public class Pools {
+public class Pools extends ResponseWithStatus {
 
 	@SerializedName("URL")
 	private String url;
 	@SerializedName("Status")
-	private String status;
+	private String poolStatus;
 	@SerializedName("Priority")
 	private Integer priority;
 	@SerializedName("Long Poll")
@@ -62,8 +62,8 @@ public class Pools {
 		return url;
 	}
 
-	public String getStatus() {
-		return status;
+	public String getPoolStatus() {
+		return poolStatus;
 	}
 
 	public Integer getPriority() {
@@ -164,7 +164,7 @@ public class Pools {
 
 	@Override
 	public String toString() {
-		return MoreObjects.toStringHelper(Pools.class).add("URL", url).add("status", status).add("priority", priority)
+		return MoreObjects.toStringHelper(Pools.class).add("status", status).add("URL", url).add("poolStatus", poolStatus).add("priority", priority)
 				.add("Long Poll", longPoll).add("Getworks", getworks).add("Accepted", accepted)
 				.add("Rejected", rejected).add("Discarded", discarded).add("stale", stale)
 				.add("Get Failures", getFailures).add("Remote Failures", remoteFailures).add("User", user)

@@ -3,7 +3,7 @@ package org.fablab.miner.api;
 import com.google.common.base.MoreObjects;
 import com.google.gson.annotations.SerializedName;
 
-public class Summary {
+public class Summary extends ResponseWithStatus {
 
 	@SerializedName("Elapsed")
 	private Integer elapsed;
@@ -134,7 +134,7 @@ public class Summary {
 
 	@Override
 	public String toString() {
-		return MoreObjects.toStringHelper(Summary.class).add("elapsed", elapsed).add("GHS 5s", ghs5s)
+		return MoreObjects.toStringHelper(Summary.class).add("status", status).add("elapsed", elapsed).add("GHS 5s", ghs5s)
 				.add("GHS av", mhsav).add("Found Blocks", foundBlocks).add("Found Blocks", foundBlocks)
 				.add("Getworks", getworks).add("Accepted", accepted).add("Rejected", rejected)
 				.add("Hardware Errors", hwErrors).add("Utility", utility).add("Discarded", discarded)
