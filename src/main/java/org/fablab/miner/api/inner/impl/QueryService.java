@@ -1,5 +1,7 @@
 package org.fablab.miner.api.inner.impl;
 
+import javax.inject.Inject;
+
 import org.fablab.miner.api.Miner;
 
 public class QueryService {
@@ -7,9 +9,10 @@ public class QueryService {
 	private ResponseParser responseParser;
 	private CommandService commandService;
 
-	public QueryService() {
-		this.responseParser = new ResponseParser();
-		this.commandService = new CommandService();
+	@Inject
+	public QueryService(ResponseParser responseParser, CommandService commandService) {
+		this.responseParser = responseParser;
+		this.commandService = commandService;
 	}
 
 	public <T> T executeQueryCommand(Miner miner, String command, Class<T> clazz) {
@@ -18,11 +21,7 @@ public class QueryService {
 
 	public <T> T executeQuery(Miner miner, String command, String extraction, Class<T> clazz) {
 		String result = query(miner, command);
-		return parseResponse(result, extraction, clazz);
-	}
-
-	private <T> T parseResponse(String json, String arrayName, Class<T> type) {
-		return responseParser.parseResponse(json, arrayName, 0, type);
+		return responseParser.parseResponse(result, extraction, clazz);
 	}
 
 	public String query(Miner miner, String command) {

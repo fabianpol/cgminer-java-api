@@ -1,5 +1,7 @@
 package org.fablab.miner.api;
 
+import javax.inject.Inject;
+
 import org.fablab.miner.api.inner.impl.JSONSyntaxCorrector;
 import org.fablab.miner.api.inner.impl.QueryService;
 import org.fablab.miner.api.inner.impl.ResponseParser;
@@ -11,10 +13,11 @@ public class CGMiner {
 	private UpdateService updateService;
 	private ResponseParser responseParser;
 
-	public CGMiner() {
-		this.queryService = new QueryService();
-		this.updateService = new UpdateService();
-		this.responseParser = new ResponseParser();
+	@Inject
+	public CGMiner(QueryService queryService, UpdateService updateService, ResponseParser responseParser) {
+		this.queryService = queryService;
+		this.updateService = updateService;
+		this.responseParser = responseParser;
 	}
 
 	public Summary summary(Miner miner) {
@@ -30,7 +33,7 @@ public class CGMiner {
 	}
 
 	public Status restart(Miner miner) {
-		return updateService.executeUpdateCommand(miner, Commands.RESTART);
+		return updateService.executeUpdate(miner, Commands.RESTART);
 	}
 
 	public Stats stats(Miner miner) {
