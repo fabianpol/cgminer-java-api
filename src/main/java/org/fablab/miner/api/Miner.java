@@ -6,12 +6,18 @@ import com.google.common.base.MoreObjects;
 
 public class Miner {
 
+	private final static int DEFAULT_PORT = 4028;
+
 	private final String ip;
 	private final int port;
 
+	public Miner(String ip) {
+		this(ip, DEFAULT_PORT);
+	}
+
 	public Miner(String ip, int port) {
 		this.ip = Objects.requireNonNull(ip);
-		this.port = Objects.requireNonNull(port);
+		this.port = port;
 	}
 
 	public String getIp() {
