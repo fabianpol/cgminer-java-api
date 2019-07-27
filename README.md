@@ -31,7 +31,7 @@ In order to make restart() work, you should modify default permissions for the m
 			System.out.println(stats.getGhs5s());
 			
 			// Requires 'restart' permission
-			Status restartStatus = api.restart(miner);
+			UpdateStatus restartStatus = api.restart(miner);
 			System.out.println(restartStatus.getDescription());
 		}
 	}

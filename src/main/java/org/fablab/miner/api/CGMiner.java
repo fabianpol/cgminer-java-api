@@ -6,6 +6,7 @@ import org.fablab.miner.api.inner.impl.JSONSyntaxCorrector;
 import org.fablab.miner.api.inner.impl.QueryService;
 import org.fablab.miner.api.inner.impl.ResponseParser;
 import org.fablab.miner.api.inner.impl.UpdateService;
+import org.fablab.miner.api.inner.impl.UpdateStatus;
 
 public class CGMiner {
 
@@ -32,7 +33,7 @@ public class CGMiner {
 		return queryService.executeQueryCommand(miner, Commands.VERSION, Version.class);
 	}
 
-	public Status restart(Miner miner) {
+	public UpdateStatus restart(Miner miner) {
 		return updateService.executeUpdate(miner, Commands.RESTART);
 	}
 

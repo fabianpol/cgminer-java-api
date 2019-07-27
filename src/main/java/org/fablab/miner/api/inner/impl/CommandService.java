@@ -50,6 +50,7 @@ public class CommandService {
 					break;
 			}
 		} catch (IOException e) {
+			LOGGER.error("Couldn't receive data from the miner", e);
 			throw new UncheckedIOException("Couldn't execute command: " + cmd, e);
 		}
 		LOGGER.debug("The miner {}:{} successfully responded", ip, port);
