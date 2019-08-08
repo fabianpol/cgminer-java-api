@@ -6,9 +6,9 @@ import com.google.inject.AbstractModule;
 
 public class GuiceModule extends AbstractModule {
 
-	@Override
-	protected void configure() {
-		bind(Gson.class).toInstance(new GsonBuilder().setLenient().create());
-	}
+  @Override
+  protected void configure() {
+    bind(Gson.class).toInstance(new GsonBuilder().setLenient().create());
+  }
 
 }

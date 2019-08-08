@@ -5,23 +5,24 @@ import com.google.gson.annotations.SerializedName;
 
 public class UpdateStatus {
 
-	@SerializedName("STATUS")
-	private String status;
+  @SerializedName("STATUS")
+  private String status;
 
-	@SerializedName("id")
-	private int id;
+  @SerializedName("id")
+  private int id;
 
-	public String getStatus() {
-		return status;
-	}
+  public String getStatus() {
+    return status;
+  }
 
-	public int getId() {
-		return id;
-	}
+  public int getId() {
+    return id;
+  }
 
-	@Override
-	public String toString() {
-		return MoreObjects.toStringHelper(UpdateStatus.class).add("status", status).add("id", id).toString();
-	}
+  @Override
+  public String toString() {
+    return MoreObjects.toStringHelper(UpdateStatus.class).add("status", status).add("id", id)
+        .toString();
+  }
 
 }
