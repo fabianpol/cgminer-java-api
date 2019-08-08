@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/fabianpol/cgminer-java-api.svg?branch=master)](https://travis-ci.org/fabianpol/cgminer-java-api)
 
 # cgminer-java-api
 
