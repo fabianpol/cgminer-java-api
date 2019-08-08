@@ -24,8 +24,8 @@ In order to make restart() work, you should modify default permissions for the m
 			Summary summary = api.summary(miner);
 			System.out.println(summary.getTotalMH());
 			
-			Pools pools = api.pools(miner);
-			System.out.println(pools.getUrl());
+			List<Pool> pools = api.pools(miner);
+			System.out.println(pools.get(0).getUrl());
 			
 			Stats stats = api.stats(miner);
 			System.out.println(stats.getGhs5s());
