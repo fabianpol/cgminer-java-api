@@ -1,5 +1,8 @@
 package org.fablab.miner.api;
 
+import java.util.Arrays;
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.fablab.miner.api.inner.impl.JSONSyntaxCorrector;
@@ -22,15 +25,16 @@ public class CGMiner {
 	}
 
 	public Summary summary(Miner miner) {
-		return queryService.executeQueryCommand(miner, Commands.SUMMARY, Summary.class);
+		return queryService.executeQueryCommand(miner, Commands.SUMMARY, Summary[].class)[0];
 	}
 
-	public Pools pools(Miner miner) {
-		return queryService.executeQueryCommand(miner, Commands.POOLS, Pools.class);
+	public List<Pool> pools(Miner miner) {
+		Pool[] poolsArr = queryService.executeQueryCommand(miner, Commands.POOLS, Pool[].class);
+		return Arrays.asList(poolsArr);
 	}
 
 	public Version version(Miner miner) {
-		return queryService.executeQueryCommand(miner, Commands.VERSION, Version.class);
+		return queryService.executeQueryCommand(miner, Commands.VERSION, Version[].class)[0];
 	}
 
 	public UpdateStatus restart(Miner miner) {

@@ -21,15 +21,20 @@ public class ResponseParser {
 	}
 
 	public <T> T parseResponse(String json, String arrayName, Class<T> type) {
-		return parseResponse(json, arrayName, 0, type);
+		return parseResponse(json, arrayName, -1, type);
 	}
 
 	public <T> T parseResponse(String json, String arrayName, int index, Class<T> type) {
 		Status status = parseQueryStatus(json);
 		if (status.getStatus().equals("S")) {
 			JSONObject jsonObj = new JSONObject(json);
-			T result = gson.fromJson(jsonObj.getJSONArray(arrayName).get(index).toString(), type);
-			return getInstanceWithStatus(status, result);
+			if(index == -1) {
+				T result = gson.fromJson(jsonObj.getJSONArray(arrayName).toString(), type);
+				return getInstanceWithStatus(status, result);
+			}else {
+				T result = gson.fromJson(jsonObj.getJSONArray(arrayName).get(index).toString(), type);
+				return getInstanceWithStatus(status, result);
+			}
 		}
 		return getInstanceWithStatus(status, createInstance(type));
 	}
