@@ -55,13 +55,12 @@ public class ResponseParser {
     }
     return result;
   }
-  
+
   private boolean isCollection(Class<?> rawPropertyType) {
-    return Collection.class.isAssignableFrom(rawPropertyType) || 
-           Map.class.isAssignableFrom(rawPropertyType) || 
-           rawPropertyType.isArray();
-}
-  
+    return Collection.class.isAssignableFrom(rawPropertyType)
+        || Map.class.isAssignableFrom(rawPropertyType) || rawPropertyType.isArray();
+  }
+
 
   public Status parseQueryStatus(String json) {
     JSONObject jsonObj = new JSONObject(json);
