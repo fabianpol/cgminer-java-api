@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/fabianpol/cgminer-java-api.svg?branch=master)](https://travis-ci.org/fabianpol/cgminer-java-api)
+[![codecov](https://codecov.io/gh/fabianpol/cgminer-java-api/branch/master/graph/badge.svg)](https://codecov.io/gh/fabianpol/cgminer-java-api/branch/master)
 
 # cgminer-java-api
 
