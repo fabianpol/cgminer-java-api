@@ -29,7 +29,7 @@ public class ResponseParserTest {
   }
 
   @Test
-  public void parseResponse_successStatusReturned() {
+  public void parseResponse_version_successStatusReturned() {
     final String input =
         "{\"STATUS\":[{\"STATUS\":\"S\",\"When\":1564141453,\"Code\":22,\"Msg\":\"custom message\",\"Description\":\"cgminer 4.9.0\"}],\"VERSION\":[{\"CGMiner\":\"4.9.0\",\"API\":\"3.1\",\"Miner\":\"1.0.1.3\",\"CompileTime\":\"Thu Apr 12 15:55:21 CST 2018\",\"Type\":\"Antminer L3++\"}],\"id\":1}";
     Version v = responseParser.parseResponse(input, "VERSION", Version.class);
@@ -38,6 +38,7 @@ public class ResponseParserTest {
     assertThat(v.getType()).isEqualTo("Antminer L3++");
     assertThat(v.getCompileTime()).isEqualTo("Thu Apr 12 15:55:21 CST 2018");
     assertThat(v.getMiner()).isEqualTo("1.0.1.3");
+    assertThat(v.getApi()).isEqualTo("3.1");
   }
 
 }
