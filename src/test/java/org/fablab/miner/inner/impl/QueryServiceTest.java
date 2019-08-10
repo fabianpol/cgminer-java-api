@@ -15,23 +15,23 @@ import org.mockito.MockitoAnnotations;
 public class QueryServiceTest {
 
   private QueryService queryService;
-  
+
   @Mock
   private ResponseParser responseParser;
-  
+
   @Mock
   private CommandService commandService;
-  
+
   private Miner miner;
-  
-  
+
+
   @BeforeEach
   public void setup() {
     MockitoAnnotations.initMocks(this);
     this.miner = new Miner("localhost");
     this.queryService = new QueryService(responseParser, commandService);
   }
-  
+
   @Test
   public void executeQueryCommand() {
     final String extraction = "extraction";
@@ -43,7 +43,7 @@ public class QueryServiceTest {
     String actual = queryService.executeQuery(miner, command, extraction, String.class);
     assertThat(actual).isEqualTo(result);
   }
-  
-  
-  
+
+
+
 }
