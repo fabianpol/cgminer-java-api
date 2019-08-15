@@ -8,6 +8,7 @@ import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.SocketAddress;
+import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
 import org.fablab.miner.api.Miner;
 import org.slf4j.Logger;
@@ -18,7 +19,7 @@ public class CommandService {
   private static final Logger LOGGER = LoggerFactory.getLogger(CommandService.class);
 
   private static final String socketTimeoutProperty = "cgminer.socket.timeout";
-  private static final int DEFAULT_TIMEOUT = 3000;
+  private static final int DEFAULT_TIMEOUT = 750;
   private static final int MAXRECEIVESIZE = 65535;
 
   public String process(String cmd, Miner miner) {
@@ -55,8 +56,11 @@ public class CommandService {
         if (buf[len - 1] == '\0')
           break;
       }
+    } catch (SocketTimeoutException e) {
+      LOGGER.warn("Couldn't connect with miner {}:{} - timeout", ip, port);
+      throw new RuntimeException(e);
     } catch (IOException e) {
-      LOGGER.error("Couldn't receive data from the miner", e);
+      LOGGER.error("Couldn't receive data from the miner: {}:{}", e);
       throw new UncheckedIOException("Couldn't execute command: " + cmd, e);
     }
     LOGGER.debug("The miner {}:{} successfully responded", ip, port);
